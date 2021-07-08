@@ -25,18 +25,18 @@ public class UploadServiceImpl implements UploadService {
 
         HashMap<String, String> message = new HashMap<String, String>();
 
-        if (file.isEmpty()) {
-            message.put("message", "File is empty");
-            return new ResponseEntity<Object>(message, HttpStatus.BAD_REQUEST);
-        }
-        if (name.trim().isEmpty()) {
-            message.put("message", "Name is empty");
-            return new ResponseEntity<Object>(message, HttpStatus.BAD_REQUEST);
-        }
-        if (dir.trim().isEmpty()) {
-            message.put("message", "Dir is empty");
-            return new ResponseEntity<Object>(message, HttpStatus.BAD_REQUEST);
-        }
+        // if (file.isEmpty()) {
+        //     message.put("message", "File is empty");
+        //     return new ResponseEntity<Object>(message, HttpStatus.BAD_REQUEST);
+        // }
+        // if (name.trim().isEmpty()) {
+        //     message.put("message", "Name is empty");
+        //     return new ResponseEntity<Object>(message, HttpStatus.BAD_REQUEST);
+        // }
+        // if (dir.trim().isEmpty()) {
+        //     message.put("message", "Dir is empty");
+        //     return new ResponseEntity<Object>(message, HttpStatus.BAD_REQUEST);
+        // }
         if (!this.checkNameFile(name)) {
             message.put("message", "Name is not suitable");
             return new ResponseEntity<Object>(message, HttpStatus.BAD_REQUEST);

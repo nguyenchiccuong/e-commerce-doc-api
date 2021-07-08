@@ -15,8 +15,6 @@ import com.example.demo.service.UploadService;
 @RestController
 public class uploadController {
 
-	// @Autowired
-	// ServletContext context;
 	private final UploadService uploadService;
 
 	@Autowired
