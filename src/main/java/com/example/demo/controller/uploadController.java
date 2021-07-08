@@ -25,8 +25,9 @@ public class uploadController {
 	}
 
 	@PostMapping(value = "upload/img", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-	public ResponseEntity<Object> uploadFile(@RequestParam("file") MultipartFile file,
-			@RequestParam("name") String name, @RequestParam("dir") String dir) {
+	public ResponseEntity<Object> uploadFile(@RequestParam(name = "file", required = true) MultipartFile file,
+			@RequestParam(name = "name", required = true) String name,
+			@RequestParam(name = "dir", required = true) String dir) {
 		return this.uploadService.uploadFile(file, name, dir);
 	}
 }
