@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.example.demo.service.UploadService;
+import com.example.demo.util.Validate1;
 
 @Service
 public class UploadServiceImpl implements UploadService {
@@ -26,22 +27,22 @@ public class UploadServiceImpl implements UploadService {
         HashMap<String, String> message = new HashMap<String, String>();
 
         // if (file.isEmpty()) {
-        //     message.put("message", "File is empty");
-        //     return new ResponseEntity<Object>(message, HttpStatus.BAD_REQUEST);
+        // message.put("message", "File is empty");
+        // return new ResponseEntity<Object>(message, HttpStatus.BAD_REQUEST);
         // }
         // if (name.trim().isEmpty()) {
-        //     message.put("message", "Name is empty");
-        //     return new ResponseEntity<Object>(message, HttpStatus.BAD_REQUEST);
+        // message.put("message", "Name is empty");
+        // return new ResponseEntity<Object>(message, HttpStatus.BAD_REQUEST);
         // }
         // if (dir.trim().isEmpty()) {
-        //     message.put("message", "Dir is empty");
-        //     return new ResponseEntity<Object>(message, HttpStatus.BAD_REQUEST);
+        // message.put("message", "Dir is empty");
+        // return new ResponseEntity<Object>(message, HttpStatus.BAD_REQUEST);
         // }
-        if (!this.checkNameFile(name)) {
+        if (!Validate1.checkNameFile(name)) {
             message.put("message", "Name is not suitable");
             return new ResponseEntity<Object>(message, HttpStatus.BAD_REQUEST);
         }
-        if (!this.checkNameDir(dir)) {
+        if (!Validate1.checkNameDir(dir)) {
             message.put("message", "Dir is not suitable");
             return new ResponseEntity<Object>(message, HttpStatus.BAD_REQUEST);
         }
@@ -72,17 +73,5 @@ public class UploadServiceImpl implements UploadService {
         }
         message.put("message", "File is uploaded successfully");
         return new ResponseEntity<Object>(message, HttpStatus.OK);
-    }
-
-    @Override
-    public boolean checkNameFile(String name) {
-        String pattern = "^[\\w,\\s-]+";
-        return Pattern.matches(pattern, name);
-    }
-
-    @Override
-    public boolean checkNameDir(String name) {
-        String pattern = "(\\\\?([^\\/]*[\\/])*)([^\\/]+)$";
-        return Pattern.matches(pattern, name);
     }
 }
